@@ -31,6 +31,16 @@
   <section class="quote-section">
     <form class="quote-form" id="quoteForm" novalidate>
 
+      <!-- ATTACHED DESIGNS (populated by JS if coming from designer) -->
+      <div id="designAttachments" style="display:none;" class="design-attachments-block">
+        <h4>🎨 Your Designs from the Studio</h4>
+        <div class="design-thumbs" id="attachmentGrid"></div>
+        <p class="attach-note" id="attachmentNote"></p>
+        <a href="design.html" style="font-size:0.82rem;font-weight:700;color:var(--pink-dark);text-decoration:none;">
+          ← Back to designer to make changes
+        </a>
+      </div>
+
       <div class="form-row">
         <div class="form-group">
           <label for="firstName">First Name *</label>
@@ -57,23 +67,30 @@
           <label for="quantity">Quantity *</label>
           <select id="quantity" name="quantity" required>
             <option value="">— Select —</option>
-            <option value="1-10">1 – 10</option>
-            <option value="11-50">11 – 50</option>
-            <option value="51-100">51 – 100</option>
-            <option value="101-500">101 – 500</option>
-            <option value="500+">500+</option>
+            <option value="5-10">5 – 10 (Starter)</option>
+            <option value="11-49">11 – 49</option>
+            <option value="50-249">50 – 249 (Studio)</option>
+            <option value="250-999">250 – 999 (Bulk Pro)</option>
+            <option value="1000+">1,000+ (Enterprise)</option>
           </select>
         </div>
         <div class="form-group">
-          <label for="size">Magnet Size *</label>
-          <select id="size" name="size" required>
-            <option value="">— Select —</option>
-            <option value="2x2">2" × 2"</option>
-            <option value="3x3">3" × 3"</option>
-            <option value="4x4">4" × 4"</option>
-            <option value="custom">Custom size</option>
+          <label for="size">Magnet Size</label>
+          <select id="size" name="size">
+            <option value="3x3">3" × 3" Square (current)</option>
           </select>
         </div>
+      </div>
+
+      <div class="form-group">
+        <label for="numDesigns">How many different designs?</label>
+        <select id="numDesigns" name="numDesigns">
+          <option value="1">1 design</option>
+          <option value="2">2 designs</option>
+          <option value="3">3 designs</option>
+          <option value="4">4 designs</option>
+          <option value="5+">5 or more designs</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -84,15 +101,16 @@
           <option value="event">Event / Party Favor</option>
           <option value="business">Business Promo</option>
           <option value="merchandise">Merchandise / Resale</option>
+          <option value="wedding">Wedding / Celebration</option>
           <option value="other">Other</option>
         </select>
       </div>
 
       <div class="form-group">
-        <label>Upload Your Design (optional)</label>
+        <label>Upload Additional Files (optional)</label>
         <label class="file-upload-label">
           📎 Click to attach a file
-          <input type="file" id="designFile" name="designFile" accept="image/*,.pdf" />
+          <input type="file" id="designFile" name="designFile" accept="image/*,.pdf" multiple />
         </label>
         <span id="fileName">No file chosen</span>
       </div>
@@ -105,7 +123,9 @@
       <button type="submit" class="btn-submit">Send My Quote Request ✨</button>
 
       <div class="success-msg" id="successMsg">
-        🎉 Thanks! We received your request and will email you within 1 business day.
+        <p style="font-size:1.6rem;margin-bottom:8px;">🎉</p>
+        <p>Thanks! We received your request and will email you within 1 business day.</p>
+        <p style="margin-top:8px;font-size:0.88rem;font-weight:400;color:var(--gray);">Check your spam folder if you don't hear from us.</p>
       </div>
 
     </form>
@@ -124,12 +144,50 @@
   </footer>
 
   <script>
-    // Show file name
+    /* ---- Load designs from designer ---- */
+    (function loadDesignerAttachments() {
+      const saved = localStorage.getItem('cv_quote_designs');
+      if (!saved) return;
+      try {
+        const designs = JSON.parse(saved);
+        if (!designs.length) return;
+        const grid = document.getElementById('attachmentGrid');
+        const block = document.getElementById('designAttachments');
+        const note  = document.getElementById('attachmentNote');
+
+        designs.forEach(d => {
+          const div = document.createElement('div');
+          div.className = 'design-thumb';
+          if (d.thumbnail) {
+            div.innerHTML = `<img src="${d.thumbnail}" alt="${d.name}" /><span>${d.name}</span>`;
+          } else {
+            div.innerHTML = `<div style="width:88px;height:88px;background:var(--light);border-radius:10px;border:2px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:2rem;">🖼️</div><span>${d.name}</span>`;
+          }
+          grid.appendChild(div);
+        });
+
+        note.textContent = `${designs.length} design${designs.length > 1 ? 's' : ''} attached from your Design Studio.`;
+        block.style.display = 'block';
+
+        // Pre-fill design count
+        const sel = document.getElementById('numDesigns');
+        const cnt = designs.length;
+        for (const opt of sel.options) {
+          if (opt.value === String(cnt)) { opt.selected = true; break; }
+          if (cnt >= 5 && opt.value === '5+') { opt.selected = true; break; }
+        }
+      } catch(e) { /* malformed JSON */ }
+    })();
+
+    /* ---- File name display ---- */
     document.getElementById('designFile').addEventListener('change', function () {
-      document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file chosen';
+      const files = this.files;
+      if (!files.length) { document.getElementById('fileName').textContent = 'No file chosen'; return; }
+      document.getElementById('fileName').textContent =
+        files.length === 1 ? files[0].name : `${files.length} files selected`;
     });
 
-    // Form submit (demo — no backend yet)
+    /* ---- Form submit (demo) ---- */
     document.getElementById('quoteForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const required = this.querySelectorAll('[required]');
@@ -139,11 +197,15 @@
         if (!f.value.trim()) { f.style.borderColor = '#C00'; valid = false; }
       });
       if (!valid) { alert('Please fill in all required fields.'); return; }
+
       document.getElementById('successMsg').classList.add('show');
-      this.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
-      window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 20, behavior: 'smooth' });
+      this.querySelectorAll('input, select, textarea, button[type=submit]').forEach(el => el.disabled = true);
+      // Clear stored designs after successful submit
+      localStorage.removeItem('cv_quote_designs');
+      window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 40, behavior: 'smooth' });
     });
   </script>
+
   <script src="animations.js"></script>
 </body>
 </html>

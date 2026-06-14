@@ -4,7 +4,7 @@
 
 /* ---------- CURSOR SPARKLES ---------- */
 (function initSparkles() {
-  const colors = ['#FF6B9D','#FFD93D','#4ECDC4','#A855F7','#FF6B35','#06D6A0'];
+  const colors = ['#FFB3C6','#D4AAFF','#B3EDE9','#FFF0B3','#FFD0B3','#B5D5FF','#FF85A1'];
   let sparkleCount = 0;
 
   document.addEventListener('mousemove', e => {
@@ -82,15 +82,19 @@
 
   // Tag elements
   const selectors = [
-    { sel: '.step',         cls: 'reveal',       delay: (i) => i * 120 },
-    { sel: '.feature-card', cls: 'reveal',       delay: (i) => i * 100 },
-    { sel: '.hero-content', cls: 'reveal-left',  delay: () => 0 },
-    { sel: '.hero-visual',  cls: 'reveal-right', delay: () => 0 },
-    { sel: '.section-title',cls: 'reveal',       delay: () => 0 },
-    { sel: '.cta-banner h2',cls: 'reveal',       delay: () => 0 },
-    { sel: '.cta-banner p', cls: 'reveal',       delay: () => 100 },
+    { sel: '.step',            cls: 'reveal',       delay: (i) => i * 120 },
+    { sel: '.feature-card',    cls: 'reveal',       delay: (i) => i * 100 },
+    { sel: '.hero-content',    cls: 'reveal-left',  delay: () => 0 },
+    { sel: '.hero-visual',     cls: 'reveal-right', delay: () => 0 },
+    { sel: '.section-title',   cls: 'reveal',       delay: () => 0 },
+    { sel: '.section-subtitle',cls: 'reveal',       delay: () => 80 },
+    { sel: '.cta-banner h2',   cls: 'reveal',       delay: () => 0 },
+    { sel: '.cta-banner p',    cls: 'reveal',       delay: () => 100 },
     { sel: '.cta-banner .btn-white', cls: 'reveal', delay: () => 200 },
-    { sel: '.stat-card',    cls: 'reveal',       delay: (i) => i * 100 },
+    { sel: '.stat-card',       cls: 'reveal',       delay: (i) => i * 100 },
+    { sel: '.gallery-magnet',  cls: 'reveal',       delay: (i) => i * 60 },
+    { sel: '.pricing-card',    cls: 'reveal',       delay: (i) => i * 120 },
+    { sel: '.faq-item',        cls: 'reveal',       delay: (i) => i * 60 },
   ];
 
   selectors.forEach(({ sel, cls, delay }) => {
@@ -184,6 +188,20 @@
 })();
 
 
+/* ---------- FAQ ACCORDION ---------- */
+(function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const item = this.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      // close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();
+
+
 /* ---------- CONFETTI ON QUOTE SUBMIT ---------- */
 (function initConfetti() {
   const form = document.getElementById('quoteForm');
@@ -195,7 +213,7 @@
   });
 
   function launchConfetti() {
-    const colors = ['#FF6B9D','#FFD93D','#4ECDC4','#A855F7','#FF6B35','#06D6A0','#fff'];
+    const colors = ['#FFB3C6','#D4AAFF','#B3EDE9','#FFF0B3','#FFD0B3','#B5D5FF','#FF85A1','#fff'];
     for (let i = 0; i < 120; i++) {
       setTimeout(() => spawnPiece(colors), Math.random() * 800);
     }
