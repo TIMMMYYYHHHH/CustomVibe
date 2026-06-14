@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design Studio — CustomVibe</title>
+  <meta name="description" content="Design your custom square magnets in the CustomVibe Studio. Upload images, add text, stickers, and more. Create multiple designs and request a quote instantly." />
+  <meta property="og:title" content="Magnet Design Studio — CustomVibe" />
+  <meta property="og:description" content="Create beautiful custom magnets with our free online design tool. Upload your image, add text and stickers, then request a quote." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -20,7 +25,16 @@
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
     <a href="quote.html" class="btn btn-nav">Get a Quote</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="design.html">Design It</a>
+    <a href="quote.html">Get a Quote</a>
+    <a href="quote.html" class="mobile-cta">Get a Quote 📬</a>
+  </div>
 
   <!-- HERO -->
   <div class="design-hero">
@@ -40,6 +54,17 @@
 
     <!-- TOOLBAR -->
     <aside class="design-toolbar">
+
+      <!-- TEMPLATES SECTION -->
+      <div class="acc-section">
+        <button class="acc-header open" data-target="acc-templates">
+          🗂️ &nbsp;Templates <span class="acc-chevron">▼</span>
+        </button>
+        <div class="acc-body open" id="acc-templates">
+          <p style="font-size:0.78rem;color:var(--gray);margin-bottom:8px;">Click to apply a starter design</p>
+          <div class="template-grid" id="templateGrid"></div>
+        </div>
+      </div>
 
       <!-- IMAGE SECTION -->
       <div class="acc-section">
@@ -191,7 +216,16 @@
 
   </div>
 
+  <!-- Save indicator toast -->
+  <div class="save-indicator" id="saveIndicator">✓ Design auto-saved</div>
+
   <script src="design.js"></script>
   <script src="animations.js"></script>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.remove('open'));
+  </script>
 </body>
 </html>

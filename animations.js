@@ -8,7 +8,7 @@
   let sparkleCount = 0;
 
   document.addEventListener('mousemove', e => {
-    if (sparkleCount++ % 3 !== 0) return; // throttle
+    if (sparkleCount++ % 3 !== 0) return;
     const el = document.createElement('span');
     el.className = 'cursor-sparkle';
     const size = Math.random() * 14 + 6;
@@ -80,7 +80,6 @@
   `;
   document.head.appendChild(style);
 
-  // Tag elements
   const selectors = [
     { sel: '.step',            cls: 'reveal',       delay: (i) => i * 120 },
     { sel: '.feature-card',    cls: 'reveal',       delay: (i) => i * 100 },
@@ -132,7 +131,6 @@
       el.textContent = original.slice(0, i++);
       setTimeout(tick, i < original.length ? 28 : 600);
     } else {
-      // blink then remove cursor
       let blinks = 0;
       const blink = setInterval(() => {
         el.style.borderRight = blinks % 2 === 0 ? 'none' : '3px solid var(--purple)';
@@ -141,7 +139,6 @@
     }
   };
 
-  // Start after a short delay so page loads first
   setTimeout(tick, 600);
 })();
 
@@ -174,7 +171,6 @@
       const start = performance.now();
       const update = (now) => {
         const progress = Math.min((now - start) / duration, 1);
-        // ease out
         const ease = 1 - Math.pow(1 - progress, 3);
         el.textContent = Math.floor(ease * target).toLocaleString() + suffix;
         if (progress < 1) requestAnimationFrame(update);
@@ -194,7 +190,6 @@
     btn.addEventListener('click', function () {
       const item = this.closest('.faq-item');
       const isOpen = item.classList.contains('open');
-      // close all
       document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
       if (!isOpen) item.classList.add('open');
     });
@@ -208,7 +203,6 @@
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
-    // Wait a tick so the success message check runs first
     setTimeout(launchConfetti, 50);
   });
 
