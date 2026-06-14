@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design Your Magnet — CustomVibe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Custom<span>Vibe</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="design.html" class="active">Design It</a></li>
+      <li><a href="quote.html">Get a Quote</a></li>
+    </ul>
+    <a href="quote.html" class="btn btn-nav">Get a Quote</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="design-hero">
+    <h1>Design Your Magnet 🎨</h1>
+    <p>Upload your image, add text, and see exactly what your square magnet will look like.</p>
+  </div>
+
+  <!-- WORKSPACE -->
+  <div class="design-workspace">
+
+    <!-- TOOLBAR -->
+    <aside class="design-toolbar">
+
+      <!-- IMAGE UPLOAD -->
+      <div class="toolbar-section">
+        <h4>📷 Your Image</h4>
+        <label class="upload-zone" id="uploadZone">
+          <span class="upload-icon">⬆️</span>
+          <p>Click to upload<br /><small>JPG, PNG, GIF, WEBP</small></p>
+          <input type="file" id="imageUpload" accept="image/*" />
+        </label>
+      </div>
+
+      <!-- IMAGE CONTROLS -->
+      <div class="toolbar-section">
+        <h4>🔍 Image Fit</h4>
+        <div class="slider-control">
+          <label>Scale <span id="scaleVal">100</span>%</label>
+          <input type="range" id="imgScale" min="20" max="300" value="100" />
+        </div>
+        <div class="slider-control" style="margin-top:8px;">
+          <label>Rotate <span id="rotateVal">0</span>°</label>
+          <input type="range" id="imgRotate" min="-180" max="180" value="0" />
+        </div>
+        <button class="toolbar-btn" id="fitImageBtn" style="margin-top:8px;">⊡ Fit to Canvas</button>
+        <button class="toolbar-btn" id="fillImageBtn" style="margin-top:6px;">⊞ Fill Canvas</button>
+      </div>
+
+      <!-- TEXT -->
+      <div class="toolbar-section">
+        <h4>✏️ Add Text</h4>
+        <div class="text-controls">
+          <input type="text" id="textInput" placeholder="Type your text..." />
+          <select id="fontSelect">
+            <option value="Nunito">Nunito (default)</option>
+            <option value="Pacifico">Pacifico (fun)</option>
+            <option value="Georgia">Georgia (classic)</option>
+            <option value="Impact">Impact (bold)</option>
+            <option value="Courier New">Courier (mono)</option>
+          </select>
+          <div class="slider-control">
+            <label>Size <span id="fontSizeVal">32</span>px</label>
+            <input type="range" id="fontSizeSlider" min="10" max="120" value="32" />
+          </div>
+          <div>
+            <p style="font-size:0.78rem;font-weight:800;color:var(--gray);margin-bottom:6px;">TEXT COLOR</p>
+            <div class="color-row">
+              <div class="color-swatch" style="background:#fff;border:2px solid #ccc;" data-color="#ffffff"></div>
+              <div class="color-swatch" style="background:#1A1A2E;" data-color="#1A1A2E"></div>
+              <div class="color-swatch" style="background:var(--pink);" data-color="#FF6B9D"></div>
+              <div class="color-swatch" style="background:var(--yellow);" data-color="#FFD93D"></div>
+              <div class="color-swatch" style="background:var(--teal);" data-color="#4ECDC4"></div>
+              <div class="color-swatch" style="background:var(--purple);" data-color="#A855F7"></div>
+              <input type="color" class="color-custom" id="customTextColor" value="#ffffff" title="Custom color" style="width:28px;height:28px;border:none;padding:0;" />
+            </div>
+          </div>
+          <button class="toolbar-btn accent" id="addTextBtn">+ Add Text</button>
+        </div>
+      </div>
+
+      <!-- CANVAS BG -->
+      <div class="toolbar-section">
+        <h4>🖼️ Background</h4>
+        <div class="color-row">
+          <div class="color-swatch" style="background:#fff;border:2px solid #ccc;" data-bg="#ffffff"></div>
+          <div class="color-swatch" style="background:var(--dark);" data-bg="#1A1A2E"></div>
+          <div class="color-swatch" style="background:var(--pink);" data-bg="#FF6B9D"></div>
+          <div class="color-swatch" style="background:var(--yellow);" data-bg="#FFD93D"></div>
+          <div class="color-swatch" style="background:var(--teal);" data-bg="#4ECDC4"></div>
+          <div class="color-swatch" style="background:var(--purple);" data-bg="#A855F7"></div>
+          <input type="color" class="color-custom" id="customBgColor" value="#ffffff" title="Custom background" style="width:28px;height:28px;border:none;padding:0;" />
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="toolbar-section">
+        <h4>⚙️ Actions</h4>
+        <button class="toolbar-btn danger" id="deleteSelBtn">🗑 Delete Selected</button>
+        <button class="toolbar-btn" id="clearBtn" style="margin-top:6px;">🔄 Clear All</button>
+      </div>
+
+    </aside>
+
+    <!-- CANVAS AREA -->
+    <main class="design-canvas-area">
+      <div class="canvas-wrapper" id="canvasWrapper">
+        <canvas id="designCanvas"></canvas>
+        <div class="size-badge">Square Magnet Preview</div>
+      </div>
+
+      <div class="canvas-actions">
+        <button class="btn btn-primary" id="downloadBtn">⬇️ Download Preview</button>
+        <a href="quote.html" class="btn btn-secondary">📬 Request a Quote</a>
+      </div>
+
+      <p style="font-size:0.82rem;color:var(--gray);text-align:center;max-width:420px;">
+        Click any object to select and move it. Drag corners to resize. Double-click text to edit.
+      </p>
+    </main>
+  </div>
+
+  <script src="design.js"></script>
+</body>
+</html>

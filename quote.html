@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get a Quote — CustomVibe</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">Custom<span>Vibe</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="design.html">Design It</a></li>
+      <li><a href="quote.html" class="active">Get a Quote</a></li>
+    </ul>
+    <a href="design.html" class="btn btn-nav">Design It</a>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <div class="quote-hero">
+    <h1>Request a Quote 📬</h1>
+    <p>Fill in your details and we'll get back to you with pricing — fast.</p>
+  </div>
+
+  <!-- FORM -->
+  <section class="quote-section">
+    <form class="quote-form" id="quoteForm" novalidate>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name *</label>
+          <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name *</label>
+          <input type="text" id="lastName" name="lastName" placeholder="Doe" required />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="quantity">Quantity *</label>
+          <select id="quantity" name="quantity" required>
+            <option value="">— Select —</option>
+            <option value="1-10">1 – 10</option>
+            <option value="11-50">11 – 50</option>
+            <option value="51-100">51 – 100</option>
+            <option value="101-500">101 – 500</option>
+            <option value="500+">500+</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="size">Magnet Size *</label>
+          <select id="size" name="size" required>
+            <option value="">— Select —</option>
+            <option value="2x2">2" × 2"</option>
+            <option value="3x3">3" × 3"</option>
+            <option value="4x4">4" × 4"</option>
+            <option value="custom">Custom size</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="useCase">What are the magnets for?</label>
+        <select id="useCase" name="useCase">
+          <option value="">— Optional —</option>
+          <option value="personal">Personal / Gift</option>
+          <option value="event">Event / Party Favor</option>
+          <option value="business">Business Promo</option>
+          <option value="merchandise">Merchandise / Resale</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Upload Your Design (optional)</label>
+        <label class="file-upload-label">
+          📎 Click to attach a file
+          <input type="file" id="designFile" name="designFile" accept="image/*,.pdf" />
+        </label>
+        <span id="fileName">No file chosen</span>
+      </div>
+
+      <div class="form-group">
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" rows="4" placeholder="Any special requests, deadlines, or details..."></textarea>
+      </div>
+
+      <button type="submit" class="btn-submit">Send My Quote Request ✨</button>
+
+      <div class="success-msg" id="successMsg">
+        🎉 Thanks! We received your request and will email you within 1 business day.
+      </div>
+
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p class="footer-logo">Custom<span>Vibe</span></p>
+    <p class="footer-motto">Find your tribe at CustomVibe</p>
+    <nav class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="design.html">Design It</a>
+      <a href="quote.html">Get a Quote</a>
+    </nav>
+    <p class="footer-copy">© 2026 CustomVibe. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Show file name
+    document.getElementById('designFile').addEventListener('change', function () {
+      document.getElementById('fileName').textContent = this.files[0] ? this.files[0].name : 'No file chosen';
+    });
+
+    // Form submit (demo — no backend yet)
+    document.getElementById('quoteForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const required = this.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(f => {
+        f.style.borderColor = '';
+        if (!f.value.trim()) { f.style.borderColor = '#C00'; valid = false; }
+      });
+      if (!valid) { alert('Please fill in all required fields.'); return; }
+      document.getElementById('successMsg').classList.add('show');
+      this.querySelectorAll('input, select, textarea, button').forEach(el => el.disabled = true);
+      window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 20, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
