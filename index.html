@@ -4,13 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CustomVibe — Find Your Tribe</title>
+  <meta name="description" content="CustomVibe — design custom square magnets with your photos and artwork. Find your tribe with high-quality, fast, affordable custom magnets." />
+  <meta property="og:title" content="CustomVibe — Find Your Tribe" />
+  <meta property="og:description" content="Turn your photos and artwork into beautiful custom magnets. Design online, request a quote in minutes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CustomVibe" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CustomVibe — Find Your Tribe" />
+  <meta name="twitter:description" content="Turn your photos and artwork into beautiful custom magnets." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
     <a href="index.html" class="nav-logo">Custom<span>Vibe</span></a>
     <ul class="nav-links">
@@ -19,9 +26,17 @@
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
     <a href="design.html" class="btn btn-nav">Start Designing</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
 
-  <!-- HERO -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="design.html">Design It</a>
+    <a href="quote.html">Get a Quote</a>
+    <a href="design.html" class="mobile-cta">Start Designing ✨</a>
+  </div>
+
   <section class="hero">
     <div class="hero-content">
       <p class="hero-eyebrow">✨ Custom Magnets Made for You</p>
@@ -47,297 +62,126 @@
     </div>
   </section>
 
-  <!-- HOW IT WORKS -->
   <section class="section how-it-works">
     <h2 class="section-title">How It Works</h2>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-icon">🖼️</div>
-        <h3>Upload Your Image</h3>
-        <p>Drop in your photo, logo, or artwork. Any format works.</p>
-      </div>
+      <div class="step"><div class="step-num">1</div><div class="step-icon">🖼️</div><h3>Upload Your Image</h3><p>Drop in your photo, logo, or artwork. Any format works.</p></div>
       <div class="step-arrow">→</div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-icon">✏️</div>
-        <h3>Customize It</h3>
-        <p>Crop, zoom, add text, stickers — make it totally yours.</p>
-      </div>
+      <div class="step"><div class="step-num">2</div><div class="step-icon">✏️</div><h3>Customize It</h3><p>Crop, zoom, add text, stickers — make it totally yours.</p></div>
       <div class="step-arrow">→</div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-icon">📬</div>
-        <h3>Request a Quote</h3>
-        <p>Tell us your quantity and we'll send pricing fast.</p>
-      </div>
+      <div class="step"><div class="step-num">3</div><div class="step-icon">📬</div><h3>Request a Quote</h3><p>Tell us your quantity and we’ll send pricing fast.</p></div>
     </div>
   </section>
 
-  <!-- FEATURES -->
   <section class="section features">
     <h2 class="section-title">Why <span>CustomVibe?</span></h2>
     <div class="feature-grid">
-      <div class="feature-card">
-        <span class="feature-icon">🎯</span>
-        <h3>Pixel-Perfect Quality</h3>
-        <p>Professional-grade printing so every detail pops.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">⚡</span>
-        <h3>Fast Turnaround</h3>
-        <p>Orders ship within days, not weeks.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🛡️</span>
-        <h3>Durable &amp; Strong</h3>
-        <p>Heavy-duty magnets that stay on your fridge for years.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🌈</span>
-        <h3>Any Quantity</h3>
-        <p>Order 1 or 1,000 — we handle all sizes.</p>
-      </div>
+      <div class="feature-card"><span class="feature-icon">🎯</span><h3>Pixel-Perfect Quality</h3><p>Professional-grade printing so every detail pops.</p></div>
+      <div class="feature-card"><span class="feature-icon">⚡</span><h3>Fast Turnaround</h3><p>Orders ship within days, not weeks.</p></div>
+      <div class="feature-card"><span class="feature-icon">🛡️</span><h3>Durable &amp; Strong</h3><p>Heavy-duty magnets that stay on your fridge for years.</p></div>
+      <div class="feature-card"><span class="feature-icon">🌈</span><h3>Any Quantity</h3><p>Order 1 or 1,000 — we handle all sizes.</p></div>
     </div>
   </section>
 
-  <!-- STATS -->
   <section class="section stats-section">
     <h2 class="section-title">The Numbers <span>Speak</span></h2>
     <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-num" data-count="5000" data-suffix="+">0+</div>
-        <div class="stat-label">Magnets Shipped</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" data-count="98" data-suffix="%">0%</div>
-        <div class="stat-label">Happy Customers</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" data-count="3" data-suffix=" days">0 days</div>
-        <div class="stat-label">Avg. Turnaround</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num" data-count="12" data-suffix=" sizes">0 sizes</div>
-        <div class="stat-label">Available Options</div>
-      </div>
+      <div class="stat-card"><div class="stat-num" data-count="5000" data-suffix="+">0+</div><div class="stat-label">Magnets Shipped</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="98" data-suffix="%">0%</div><div class="stat-label">Happy Customers</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="3" data-suffix=" days">0 days</div><div class="stat-label">Avg. Turnaround</div></div>
+      <div class="stat-card"><div class="stat-num" data-count="12" data-suffix=" sizes">0 sizes</div><div class="stat-label">Available Options</div></div>
     </div>
   </section>
 
-  <!-- GALLERY -->
   <section class="section gallery-section">
     <h2 class="section-title">Made with <span>CustomVibe</span></h2>
     <p class="section-subtitle">A peek at what our community has created.</p>
     <div class="gallery-grid">
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFB3C6,#FFD0B3);">
-        <span class="gm-emoji">🐾</span><span class="gm-label">Paw Life</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#D4AAFF,#B5D5FF);">
-        <span class="gm-emoji">🦋</span><span class="gm-label">Free Spirit</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B3EDE9,#B5D5FF);">
-        <span class="gm-emoji">🌊</span><span class="gm-label">Ocean Vibes</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFF0B3,#FFD0B3);">
-        <span class="gm-emoji">☀️</span><span class="gm-label">Golden Hour</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFB3C6,#D4AAFF);">
-        <span class="gm-emoji">🦄</span><span class="gm-label">Dream Big</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B3EDE9,#FFF0B3);">
-        <span class="gm-emoji">🌸</span><span class="gm-label">In Bloom</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFD0B3,#FFF0B3);">
-        <span class="gm-emoji">🍕</span><span class="gm-label">Pizza Gang</span>
-      </div>
-      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B5D5FF,#D4AAFF);">
-        <span class="gm-emoji">🎵</span><span class="gm-label">Music Is Life</span>
-      </div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFB3C6,#FFD0B3);"><span class="gm-emoji">🐾</span><span class="gm-label">Paw Life</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#D4AAFF,#B5D5FF);"><span class="gm-emoji">🦋</span><span class="gm-label">Free Spirit</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B3EDE9,#B5D5FF);"><span class="gm-emoji">🌊</span><span class="gm-label">Ocean Vibes</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFF0B3,#FFD0B3);"><span class="gm-emoji">☀️</span><span class="gm-label">Golden Hour</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFB3C6,#D4AAFF);"><span class="gm-emoji">🦄</span><span class="gm-label">Dream Big</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B3EDE9,#FFF0B3);"><span class="gm-emoji">🌸</span><span class="gm-label">In Bloom</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#FFD0B3,#FFF0B3);"><span class="gm-emoji">🍕</span><span class="gm-label">Pizza Gang</span></div>
+      <div class="gallery-magnet" style="background:linear-gradient(135deg,#B5D5FF,#D4AAFF);"><span class="gm-emoji">🎵</span><span class="gm-label">Music Is Life</span></div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
   <section class="section testimonials-section">
     <h2 class="section-title">What People <span>Are Saying</span></h2>
     <div class="marquee-wrapper">
-      <div class="marquee-track" id="marqueeTrack">
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Ordered 50 magnets for my small business and they looked incredible. My customers loved them!"</p>
-          <div class="testimonial-author">— Sarah K., Small Business Owner</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"The design tool is so easy to use. I made a whole set of custom pet magnets in under 10 minutes!"</p>
-          <div class="testimonial-author">— Marcus T., Dog Dad</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Super fast shipping and the quality is way better than I expected. Will definitely order again."</p>
-          <div class="testimonial-author">— Priya R., Event Planner</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★☆</div>
-          <p class="testimonial-text">"Used these as wedding favors and they were a huge hit. Everyone took extras home!"</p>
-          <div class="testimonial-author">— Jamie &amp; Alex, Newlyweds</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"I run a fan merch table and CustomVibe magnets outsell everything else I offer. Unreal."</p>
-          <div class="testimonial-author">— Devon C., Creator</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Colors are vivid, magnets are strong, and the team responded to my quote within hours."</p>
-          <div class="testimonial-author">— Linda M., Teacher</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Ordered 50 magnets for my small business and they looked incredible. My customers loved them!"</p>
-          <div class="testimonial-author">— Sarah K., Small Business Owner</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"The design tool is so easy to use. I made a whole set of custom pet magnets in under 10 minutes!"</p>
-          <div class="testimonial-author">— Marcus T., Dog Dad</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Super fast shipping and the quality is way better than I expected. Will definitely order again."</p>
-          <div class="testimonial-author">— Priya R., Event Planner</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★☆</div>
-          <p class="testimonial-text">"Used these as wedding favors and they were a huge hit. Everyone took extras home!"</p>
-          <div class="testimonial-author">— Jamie &amp; Alex, Newlyweds</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"I run a fan merch table and CustomVibe magnets outsell everything else I offer. Unreal."</p>
-          <div class="testimonial-author">— Devon C., Creator</div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"Colors are vivid, magnets are strong, and the team responded to my quote within hours."</p>
-          <div class="testimonial-author">— Linda M., Teacher</div>
-        </div>
+      <div class="marquee-track">
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Ordered 50 magnets for my small business and they looked incredible. My customers loved them!”</p><div class="testimonial-author">— Sarah K., Small Business Owner</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“The design tool is so easy to use. I made a whole set of custom pet magnets in under 10 minutes!”</p><div class="testimonial-author">— Marcus T., Dog Dad</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Super fast shipping and the quality is way better than I expected. Will definitely order again.”</p><div class="testimonial-author">— Priya R., Event Planner</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★☆</div><p class="testimonial-text">“Used these as wedding favors and they were a huge hit. Everyone took extras home!”</p><div class="testimonial-author">— Jamie &amp; Alex, Newlyweds</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“I run a fan merch table and CustomVibe magnets outsell everything else I offer. Unreal.”</p><div class="testimonial-author">— Devon C., Creator</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Colors are vivid, magnets are strong, and the team responded to my quote within hours.”</p><div class="testimonial-author">— Linda M., Teacher</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Ordered 50 magnets for my small business and they looked incredible. My customers loved them!”</p><div class="testimonial-author">— Sarah K., Small Business Owner</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“The design tool is so easy to use. I made a whole set of custom pet magnets in under 10 minutes!”</p><div class="testimonial-author">— Marcus T., Dog Dad</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Super fast shipping and the quality is way better than I expected. Will definitely order again.”</p><div class="testimonial-author">— Priya R., Event Planner</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★☆</div><p class="testimonial-text">“Used these as wedding favors and they were a huge hit. Everyone took extras home!”</p><div class="testimonial-author">— Jamie &amp; Alex, Newlyweds</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“I run a fan merch table and CustomVibe magnets outsell everything else I offer. Unreal.”</p><div class="testimonial-author">— Devon C., Creator</div></div>
+        <div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">“Colors are vivid, magnets are strong, and the team responded to my quote within hours.”</p><div class="testimonial-author">— Linda M., Teacher</div></div>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
   <section class="section pricing-section">
     <h2 class="section-title">Simple <span>Pricing</span></h2>
-    <p class="pricing-note">All magnets are 3" × 3" square. Prices are estimated — your quote will confirm exact costs.</p>
+    <p class="pricing-note">All magnets are 3” × 3” square. Prices are estimated — your quote will confirm exact costs.</p>
     <div class="pricing-grid">
-      <div class="pricing-card">
-        <div class="pricing-tier">Starter</div>
-        <div class="pricing-size">3" × 3"</div>
-        <div class="pricing-desc">Perfect for personal use or small gifts</div>
-        <div class="pricing-price">$2.99 <span>/ each</span></div>
-        <div class="pricing-min">Minimum 5 units</div>
-        <ul class="pricing-features">
-          <li>Square magnet, 3"×3"</li>
-          <li>Full-color print</li>
-          <li>Standard thickness</li>
-          <li>Ships in 5-7 days</li>
-        </ul>
-        <a href="quote.html" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Get a Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-badge">⭐ Most Popular</div>
-        <div class="pricing-tier">Studio</div>
-        <div class="pricing-size">3" × 3"</div>
-        <div class="pricing-desc">Great for events, merch, or resale</div>
-        <div class="pricing-price">$1.49 <span>/ each</span></div>
-        <div class="pricing-min">Minimum 50 units</div>
-        <ul class="pricing-features">
-          <li>Square magnet, 3"×3"</li>
-          <li>Full-color print</li>
-          <li>Premium thickness</li>
-          <li>Ships in 3-5 days</li>
-        </ul>
-        <a href="quote.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Get a Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Bulk Pro</div>
-        <div class="pricing-size">3" × 3"</div>
-        <div class="pricing-desc">Best value for large runs or businesses</div>
-        <div class="pricing-price">$0.79 <span>/ each</span></div>
-        <div class="pricing-min">Minimum 250 units</div>
-        <ul class="pricing-features">
-          <li>Square magnet, 3"×3"</li>
-          <li>Full-color print</li>
-          <li>Premium thickness</li>
-          <li>Priority 2-3 day shipping</li>
-        </ul>
-        <a href="quote.html" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Get a Quote</a>
-      </div>
+      <div class="pricing-card"><div class="pricing-tier">Starter</div><div class="pricing-size">3” × 3”</div><div class="pricing-desc">Perfect for personal use or small gifts</div><div class="pricing-price">$2.99 <span>/ each</span></div><div class="pricing-min">Minimum 5 units</div><ul class="pricing-features"><li>Square magnet, 3”×3”</li><li>Full-color print</li><li>Standard thickness</li><li>Ships in 5-7 days</li></ul><a href="quote.html" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Get a Quote</a></div>
+      <div class="pricing-card featured"><div class="pricing-badge">⭐ Most Popular</div><div class="pricing-tier">Studio</div><div class="pricing-size">3” × 3”</div><div class="pricing-desc">Great for events, merch, or resale</div><div class="pricing-price">$1.49 <span>/ each</span></div><div class="pricing-min">Minimum 50 units</div><ul class="pricing-features"><li>Square magnet, 3”×3”</li><li>Full-color print</li><li>Premium thickness</li><li>Ships in 3-5 days</li></ul><a href="quote.html" class="btn btn-primary" style="width:100%;text-align:center;display:block;">Get a Quote</a></div>
+      <div class="pricing-card"><div class="pricing-tier">Bulk Pro</div><div class="pricing-size">3” × 3”</div><div class="pricing-desc">Best value for large runs or businesses</div><div class="pricing-price">$0.79 <span>/ each</span></div><div class="pricing-min">Minimum 250 units</div><ul class="pricing-features"><li>Square magnet, 3”×3”</li><li>Full-color print</li><li>Premium thickness</li><li>Priority 2-3 day shipping</li></ul><a href="quote.html" class="btn btn-outline" style="width:100%;text-align:center;display:block;">Get a Quote</a></div>
     </div>
   </section>
 
-  <!-- FAQ -->
   <section class="section faq-section">
     <h2 class="section-title">Got <span>Questions?</span></h2>
     <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">What file formats can I upload?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>We accept JPG, PNG, GIF, and WEBP files. For the best print quality, upload images at 300 DPI or higher. Our design tool will show you exactly how your image will look on the final magnet.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What size are the magnets?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>All current magnets are 3" × 3" square. We're working on additional size options — sign up for our newsletter or check back soon for updates.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How long does production and shipping take?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>Production takes 1-3 business days. Standard orders ship in 5-7 days, Studio orders in 3-5 days, and Bulk Pro orders get priority shipping in 2-3 days. Rush options are available — mention it in your quote request.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What's the minimum order quantity?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>The minimum order is just 5 units on the Starter plan, making it perfect for personal use or small gifts. Mention it in your quote request if you need fewer.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Can I order multiple different designs in one order?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>Absolutely! Use our design tool to create multiple magnet designs, then send them all to your quote request in one click. Pricing is based on total quantity across all designs.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Are the magnets safe for use on appliances?
-          <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
-        <div class="faq-answer"><p>Yes! Our magnets use strong ferrite material safe for refrigerators, filing cabinets, and other metal surfaces. The printed surface has a UV-resistant coating so colors stay vibrant for years.</p></div>
-      </div>
+      <div class="faq-item"><button class="faq-question">What file formats can I upload? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>We accept JPG, PNG, GIF, and WEBP files. For best print quality, upload images at 300 DPI or higher.</p></div></div>
+      <div class="faq-item"><button class="faq-question">What size are the magnets? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>All current magnets are 3” × 3” square. More sizes coming soon — sign up for our newsletter to be first to know.</p></div></div>
+      <div class="faq-item"><button class="faq-question">How long does production and shipping take? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Production takes 1-3 business days. Shipping: Starter 5-7 days, Studio 3-5 days, Bulk Pro 2-3 days priority. Rush options available.</p></div></div>
+      <div class="faq-item"><button class="faq-question">What’s the minimum order quantity? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Just 5 units on the Starter plan. Need fewer? Mention it in your quote request and we’ll do our best.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Can I order multiple different designs? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Yes! Create multiple designs in our studio and send them all to your quote in one click. Pricing is based on total quantity.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Are the magnets safe on appliances? <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button><div class="faq-answer"><p>Absolutely. Strong ferrite material, safe for fridges and metal surfaces. UV-resistant coating keeps colors vivid for years.</p></div></div>
     </div>
   </section>
 
-  <!-- CTA BANNER -->
+  <section class="newsletter-section">
+    <h2>Stay in the Loop 💌</h2>
+    <p>Get early access to new sizes, features, and exclusive discounts.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-success" id="newsletterSuccess">🎉 You’re in! Watch your inbox.</p>
+  </section>
+
   <section class="cta-banner">
     <h2>Ready to vibe?</h2>
     <p>Design your first magnet in under 2 minutes — no account needed.</p>
     <a href="design.html" class="btn btn-white">Start Designing Free</a>
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer-logo">Custom<span>Vibe</span></p>
     <p class="footer-motto">Find your tribe at CustomVibe</p>
-    <nav class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="design.html">Design It</a>
-      <a href="quote.html">Get a Quote</a>
-    </nav>
+    <nav class="footer-links"><a href="index.html">Home</a><a href="design.html">Design It</a><a href="quote.html">Get a Quote</a></nav>
     <p class="footer-copy">© 2026 CustomVibe. All rights reserved.</p>
   </footer>
 
   <script src="animations.js"></script>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('newsletterSuccess').classList.add('show');
+    });
+  </script>
 </body>
 </html>
