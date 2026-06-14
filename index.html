@@ -4,6 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CustomVibe — Find Your Tribe</title>
+  <meta name="description" content="CustomVibe — design custom square magnets with your photos and artwork. Find your tribe with high-quality, fast, affordable custom magnets." />
+  <meta property="og:title" content="CustomVibe — Find Your Tribe" />
+  <meta property="og:description" content="Turn your photos and artwork into beautiful custom magnets. Design online, request a quote in minutes." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="CustomVibe" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="CustomVibe — Find Your Tribe" />
+  <meta name="twitter:description" content="Turn your photos and artwork into beautiful custom magnets." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -19,7 +27,17 @@
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
     <a href="design.html" class="btn btn-nav">Start Designing</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">✕</button>
+    <a href="index.html">Home</a>
+    <a href="design.html">Design It</a>
+    <a href="quote.html">Get a Quote</a>
+    <a href="design.html" class="mobile-cta">Start Designing ✨</a>
+  </div>
 
   <!-- HERO -->
   <section class="hero">
@@ -321,6 +339,17 @@
     </div>
   </section>
 
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <h2>Stay in the Loop 💌</h2>
+    <p>Get early access to new sizes, features, and exclusive discounts.</p>
+    <form class="newsletter-form" id="newsletterForm">
+      <input type="email" placeholder="your@email.com" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="newsletter-success" id="newsletterSuccess">🎉 You're in! Watch your inbox.</p>
+  </section>
+
   <!-- CTA BANNER -->
   <section class="cta-banner">
     <h2>Ready to vibe?</h2>
@@ -341,5 +370,19 @@
   </footer>
 
   <script src="animations.js"></script>
+  <script>
+    // Hamburger menu
+    document.getElementById('hamburger').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.remove('open'));
+
+    // Newsletter
+    document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      this.style.display = 'none';
+      document.getElementById('newsletterSuccess').classList.add('show');
+    });
+  </script>
 </body>
 </html>

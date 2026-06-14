@@ -1,5 +1,183 @@
 /* ====== CustomVibe — Multi-Design Studio ====== */
 
+/* ---------- TEMPLATE LIBRARY ---------- */
+const TEMPLATES = [
+  {
+    name: 'Paw Life',
+    bg: 'linear-gradient(135deg,#FFB3C6,#FFD0B3)',
+    bgColor: '#FFB3C6',
+    emoji: '🐾',
+    label: 'PAW LIFE',
+    textColor: '#C4456A',
+  },
+  {
+    name: 'Ocean Vibes',
+    bg: 'linear-gradient(135deg,#B3EDE9,#B5D5FF)',
+    bgColor: '#B3EDE9',
+    emoji: '🌊',
+    label: 'OCEAN VIBES',
+    textColor: '#2A9D8F',
+  },
+  {
+    name: 'Dream Big',
+    bg: 'linear-gradient(135deg,#D4AAFF,#FFB3C6)',
+    bgColor: '#D4AAFF',
+    emoji: '🦄',
+    label: 'DREAM BIG',
+    textColor: '#7C3AED',
+  },
+  {
+    name: 'Golden Hour',
+    bg: 'linear-gradient(135deg,#FFF0B3,#FFD0B3)',
+    bgColor: '#FFF0B3',
+    emoji: '☀️',
+    label: 'GOLDEN HOUR',
+    textColor: '#B45309',
+  },
+  {
+    name: 'Music Life',
+    bg: 'linear-gradient(135deg,#B5D5FF,#D4AAFF)',
+    bgColor: '#B5D5FF',
+    emoji: '🎵',
+    label: 'MUSIC IS LIFE',
+    textColor: '#1D4ED8',
+  },
+  {
+    name: 'Pizza Gang',
+    bg: 'linear-gradient(135deg,#FFD0B3,#FFF0B3)',
+    bgColor: '#FFD0B3',
+    emoji: '🍕',
+    label: 'PIZZA GANG',
+    textColor: '#C2410C',
+  },
+  {
+    name: 'In Bloom',
+    bg: 'linear-gradient(135deg,#B3EDE9,#FFF0B3)',
+    bgColor: '#B3EDE9',
+    emoji: '🌸',
+    label: 'IN BLOOM',
+    textColor: '#2A9D8F',
+  },
+  {
+    name: 'Bold Name',
+    bg: 'linear-gradient(135deg,#2D2B3D,#3D1F5E)',
+    bgColor: '#2D2B3D',
+    emoji: null,
+    label: 'YOUR NAME',
+    textColor: '#FFB3C6',
+  },
+];
+
+function buildTemplateGrid() {
+  const grid = document.getElementById('templateGrid');
+  TEMPLATES.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'template-card';
+    card.title = t.name;
+    card.innerHTML = `
+      <div class="template-preview" style="background:${t.bg};">
+        ${t.emoji ? `<span style="font-size:1.8rem">${t.emoji}</span>` : ''}
+        <span>${t.label}</span>
+      </div>
+      <div class="template-name">${t.name}</div>
+    `;
+    card.addEventListener('click', () => applyTemplate(t));
+    grid.appendChild(card);
+  });
+}
+
+function applyTemplate(t) {
+  if (canvas.getObjects().length > 0) {
+    if (!confirm(`Replace current canvas with the "${t.name}" template?`)) return;
+  }
+  canvas.clear();
+  canvas.setBackgroundColor(t.bgColor, () => {});
+
+  const objects = [];
+
+  if (t.emoji) {
+    objects.push(new Promise(resolve => {
+      const emoji = new fabric.Text(t.emoji, {
+        left: CANVAS_SIZE / 2,
+        top: CANVAS_SIZE * 0.35,
+        originX: 'center',
+        originY: 'center',
+        fontSize: Math.round(CANVAS_SIZE * 0.22),
+        selectable: true,
+      });
+      resolve(emoji);
+    }));
+  }
+
+  objects.push(new Promise(resolve => {
+    const text = new fabric.IText(t.label, {
+      left: CANVAS_SIZE / 2,
+      top: t.emoji ? CANVAS_SIZE * 0.72 : CANVAS_SIZE / 2,
+      originX: 'center',
+      originY: 'center',
+      fontSize: Math.round(CANVAS_SIZE * 0.1),
+      fontFamily: 'Nunito',
+      fontWeight: '900',
+      fill: t.textColor,
+      textAlign: 'center',
+      charSpacing: 80,
+    });
+    resolve(text);
+  }));
+
+  Promise.all(objects).then(objs => {
+    objs.forEach(o => canvas.add(o));
+    canvas.renderAll();
+    refreshLayers();
+    pushHistory();
+    showSaveIndicator();
+  });
+}
+
+/* ---------- SAVE INDICATOR ---------- */
+function showSaveIndicator() {
+  const el = document.getElementById('saveIndicator');
+  if (!el) return;
+  el.classList.add('show');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.remove('show'), 2000);
+}
+
+/* ---------- PERSISTENCE ---------- */
+const STORAGE_KEY = 'cv_studio_state';
+
+function persistState() {
+  saveCurrentDesign();
+  try {
+    const state = { designs, activeId, nextId };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    showSaveIndicator();
+  } catch(e) { /* quota exceeded — silent */ }
+}
+
+function restoreState() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (!raw) return false;
+    const state = JSON.parse(raw);
+    if (!state.designs || !state.designs.length) return false;
+    // Restore designs array and IDs
+    designs.length = 0;
+    state.designs.forEach(d => designs.push(d));
+    nextId = state.nextId || designs.length + 1;
+    activeId = state.activeId || designs[0].id;
+    // Restore histories (empty — we don't persist those)
+    designs.forEach(d => { if (!histories[d.id]) histories[d.id] = { stack: [], cursor: -1 }; });
+    return true;
+  } catch(e) { return false; }
+}
+
+let persistTimer = null;
+function debouncedPersist() {
+  clearTimeout(persistTimer);
+  persistTimer = setTimeout(persistState, 1500);
+}
+
 const CANVAS_SIZE = Math.min(window.innerWidth < 900 ? window.innerWidth - 40 : 500, 500);
 
 /* ---------- CANVAS INIT ---------- */
@@ -579,5 +757,26 @@ document.querySelectorAll('.acc-header').forEach(header => {
 });
 
 /* ---------- INIT ---------- */
-renderTabs();
-pushHistory(); // baseline for design 1
+buildTemplateGrid();
+
+// Restore previous session or start fresh
+if (restoreState()) {
+  renderTabs();
+  loadDesign(getActive());
+  pushHistory();
+} else {
+  renderTabs();
+  pushHistory();
+}
+
+// Auto-persist on every canvas change
+canvas.on('object:added',    debouncedPersist);
+canvas.on('object:removed',  debouncedPersist);
+canvas.on('object:modified', debouncedPersist);
+
+// Also persist when switching / creating designs
+const _origSwitch = switchDesign;
+// (already calls saveCurrentDesign internally)
+
+// Persist on page unload
+window.addEventListener('beforeunload', persistState);

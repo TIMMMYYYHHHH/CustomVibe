@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get a Quote — CustomVibe</title>
+  <meta name="description" content="Request a quote for your custom square magnets from CustomVibe. Fast turnaround, any quantity, competitive pricing. We respond within 1 business day." />
+  <meta property="og:title" content="Get a Quote — CustomVibe" />
+  <meta property="og:description" content="Request a quote for custom magnets. Any quantity, fast turnaround, competitive pricing." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -19,7 +24,16 @@
       <li><a href="quote.html" class="active">Get a Quote</a></li>
     </ul>
     <a href="design.html" class="btn btn-nav">Design It</a>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <a href="index.html">Home</a>
+    <a href="design.html">Design It</a>
+    <a href="quote.html">Get a Quote</a>
+    <a href="design.html" class="mobile-cta">Start Designing ✨</a>
+  </div>
 
   <!-- PAGE HEADER -->
   <div class="quote-hero">
@@ -207,5 +221,11 @@
   </script>
 
   <script src="animations.js"></script>
+  <script>
+    document.getElementById('hamburger').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.add('open'));
+    document.getElementById('menuClose').addEventListener('click', () =>
+      document.getElementById('mobileMenu').classList.remove('open'));
+  </script>
 </body>
 </html>
