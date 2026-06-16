@@ -4,26 +4,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Get a Quote — CustomVibe</title>
-  <meta name="description" content="Request a quote for your custom square magnets from CustomVibe. Fast turnaround, any quantity, competitive pricing. We respond within 1 business day." />
+  <meta name="description" content="Request a quote for your custom 3×3 magnets. Choose your pack, attach your design, and we'll get back to you within 1 business day." />
   <meta property="og:title" content="Get a Quote — CustomVibe" />
-  <meta property="og:description" content="Request a quote for custom magnets. Any quantity, fast turnaround, competitive pricing." />
+  <meta property="og:description" content="Choose your pack and request a quote for custom magnets. Starting at R50." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo">Custom<span>Vibe</span></a>
+    <a href="index.html" class="nav-logo">CustomVibe</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="design.html">Design It</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
       <li><a href="quote.html" class="active">Get a Quote</a></li>
     </ul>
-    <a href="design.html" class="btn btn-nav">Design It</a>
+    <a href="design.html" class="btn-nav">Design It</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
 
@@ -31,123 +31,149 @@
     <button class="mobile-menu-close" id="menuClose">✕</button>
     <a href="index.html">Home</a>
     <a href="design.html">Design It</a>
+    <a href="index.html#pricing">Pricing</a>
     <a href="quote.html">Get a Quote</a>
     <a href="design.html" class="mobile-cta">Start Designing ✨</a>
   </div>
 
-  <!-- PAGE HEADER -->
   <div class="quote-hero">
     <h1>Request a Quote 📬</h1>
-    <p>Fill in your details and we'll get back to you with pricing — fast.</p>
+    <p>Pick your pack, share your design, and we'll be in touch within 1 business day.</p>
   </div>
 
-  <!-- FORM -->
   <section class="quote-section">
-    <form class="quote-form" id="quoteForm" novalidate>
 
-      <!-- ATTACHED DESIGNS (populated by JS if coming from designer) -->
-      <div id="designAttachments" style="display:none;" class="design-attachments-block">
-        <h4>🎨 Your Designs from the Studio</h4>
-        <div class="design-thumbs" id="attachmentGrid"></div>
-        <p class="attach-note" id="attachmentNote"></p>
-        <a href="design.html" style="font-size:0.82rem;font-weight:700;color:var(--pink-dark);text-decoration:none;">
-          ← Back to designer to make changes
-        </a>
-      </div>
+    <!-- PROGRESS -->
+    <div class="progress-bar" id="progressBar">
+      <div class="progress-step active" data-step="1"><div class="step-circle">1</div><span class="step-label">Pack</span></div>
+      <div class="progress-step" data-step="2"><div class="step-circle">2</div><span class="step-label">Design</span></div>
+      <div class="progress-step" data-step="3"><div class="step-circle">3</div><span class="step-label">Details</span></div>
+      <div class="progress-step" data-step="4"><div class="step-circle">4</div><span class="step-label">Confirm</span></div>
+    </div>
 
-      <div class="form-row">
-        <div class="form-group">
-          <label for="firstName">First Name *</label>
-          <input type="text" id="firstName" name="firstName" placeholder="Jane" required />
+    <form id="quoteForm" novalidate>
+
+      <!-- STEP 1: PACK -->
+      <div class="wizard-panel active" data-panel="1">
+        <h2>Choose your pack</h2>
+        <p>Pick the option that fits your order.</p>
+        <div class="pack-grid">
+          <div class="pack-card" data-pack="Starter" data-price="R50" data-qty="1 magnet">
+            <div class="pack-card-name">Starter</div>
+            <div class="pack-card-price">R50</div>
+            <div class="pack-card-qty">1 magnet</div>
+          </div>
+          <div class="pack-card popular-pack" data-pack="Pack" data-price="R250" data-qty="6 magnets">
+            <div class="pack-card-name">Pack</div>
+            <div class="pack-card-price">R250</div>
+            <div class="pack-card-qty">6 magnets</div>
+          </div>
+          <div class="pack-card" data-pack="Bundle" data-price="R400" data-qty="10 magnets">
+            <div class="pack-card-name">Bundle</div>
+            <div class="pack-card-price">R400</div>
+            <div class="pack-card-qty">10 magnets</div>
+          </div>
+          <div class="pack-card" data-pack="Custom" data-price="Custom Quote" data-qty="11+ magnets">
+            <div class="pack-card-name">Custom Order</div>
+            <div class="pack-card-price" style="font-size:1.3rem;">Custom Quote</div>
+            <div class="pack-card-qty">11+ magnets</div>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="lastName">Last Name *</label>
-          <input type="text" id="lastName" name="lastName" placeholder="Doe" required />
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email Address *</label>
-        <input type="email" id="email" name="email" placeholder="jane@example.com" required />
-      </div>
-
-      <div class="form-group">
-        <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" />
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="quantity">Quantity *</label>
-          <select id="quantity" name="quantity" required>
-            <option value="">— Select —</option>
-            <option value="5-10">5 – 10 (Starter)</option>
-            <option value="11-49">11 – 49</option>
-            <option value="50-249">50 – 249 (Studio)</option>
-            <option value="250-999">250 – 999 (Bulk Pro)</option>
-            <option value="1000+">1,000+ (Enterprise)</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="size">Magnet Size</label>
-          <select id="size" name="size">
-            <option value="3x3">3" × 3" Square (current)</option>
-          </select>
+        <div class="wizard-nav">
+          <button type="button" class="btn-next" id="next1">Next →</button>
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="numDesigns">How many different designs?</label>
-        <select id="numDesigns" name="numDesigns">
-          <option value="1">1 design</option>
-          <option value="2">2 designs</option>
-          <option value="3">3 designs</option>
-          <option value="4">4 designs</option>
-          <option value="5+">5 or more designs</option>
-        </select>
+      <!-- STEP 2: DESIGN -->
+      <div class="wizard-panel" data-panel="2">
+        <h2>Your design</h2>
+        <p>Bring in your design from the studio, or upload a file directly.</p>
+
+        <div id="designAttachBox" class="design-attach-box" style="display:none;">
+          <div class="design-attach-thumb" id="attachThumb">🖼️</div>
+          <div class="design-attach-info">
+            <h4>Design from Studio</h4>
+            <p>This will be attached to your quote request.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Upload a file instead (optional)</label>
+          <label class="file-upload-label">
+            📎 Click to attach a file
+            <input type="file" id="designFile" accept="image/*,.pdf" />
+          </label>
+          <span id="fileName" style="font-size:0.8rem;color:var(--text-muted);display:block;margin-top:6px;">No file chosen</span>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" placeholder="Any special requests, deadlines, or details..."></textarea>
+        </div>
+
+        <div class="wizard-nav">
+          <button type="button" class="btn-back" id="back2">← Back</button>
+          <button type="button" class="btn-next" id="next2">Next →</button>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label for="useCase">What are the magnets for?</label>
-        <select id="useCase" name="useCase">
-          <option value="">— Optional —</option>
-          <option value="personal">Personal / Gift</option>
-          <option value="event">Event / Party Favor</option>
-          <option value="business">Business Promo</option>
-          <option value="merchandise">Merchandise / Resale</option>
-          <option value="wedding">Wedding / Celebration</option>
-          <option value="other">Other</option>
-        </select>
+      <!-- STEP 3: DETAILS -->
+      <div class="wizard-panel" data-panel="3">
+        <h2>Your details</h2>
+        <p>So we know who to send your quote to.</p>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" placeholder="Doe" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" placeholder="jane@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="(555) 123-4567" />
+        </div>
+
+        <div class="wizard-nav">
+          <button type="button" class="btn-back" id="back3">← Back</button>
+          <button type="button" class="btn-next" id="next3">Next →</button>
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Upload Additional Files (optional)</label>
-        <label class="file-upload-label">
-          📎 Click to attach a file
-          <input type="file" id="designFile" name="designFile" accept="image/*,.pdf" multiple />
-        </label>
-        <span id="fileName">No file chosen</span>
-      </div>
+      <!-- STEP 4: CONFIRM -->
+      <div class="wizard-panel" data-panel="4">
+        <h2>Confirm & submit</h2>
+        <p>Double-check everything looks right.</p>
 
-      <div class="form-group">
-        <label for="notes">Additional Notes</label>
-        <textarea id="notes" name="notes" rows="4" placeholder="Any special requests, deadlines, or details..."></textarea>
-      </div>
+        <div class="summary-box" id="summaryBox"></div>
 
-      <button type="submit" class="btn-submit">Send My Quote Request ✨</button>
-
-      <div class="success-msg" id="successMsg">
-        <p style="font-size:1.6rem;margin-bottom:8px;">🎉</p>
-        <p>Thanks! We received your request and will email you within 1 business day.</p>
-        <p style="margin-top:8px;font-size:0.88rem;font-weight:400;color:var(--gray);">Check your spam folder if you don't hear from us.</p>
+        <div class="wizard-nav">
+          <button type="button" class="btn-back" id="back4">← Back</button>
+          <button type="submit" class="btn-next">Submit Request ✨</button>
+        </div>
       </div>
 
     </form>
+
+    <!-- SUCCESS -->
+    <div class="success-state" id="successState">
+      <p class="success-icon">🎉</p>
+      <h2>You're all set!</h2>
+      <p>We've received your request and will email you within 1 business day.</p>
+      <p style="margin-top:8px;font-size:0.82rem;">Check your spam folder if you don't hear from us.</p>
+    </div>
+
   </section>
 
-  <!-- FOOTER -->
   <footer class="footer">
-    <p class="footer-logo">Custom<span>Vibe</span></p>
+    <p class="footer-logo">CustomVibe</p>
     <p class="footer-motto">Find your tribe at CustomVibe</p>
     <nav class="footer-links">
       <a href="index.html">Home</a>
@@ -158,65 +184,97 @@
   </footer>
 
   <script>
-    /* ---- Load designs from designer ---- */
-    (function loadDesignerAttachments() {
-      const saved = localStorage.getItem('cv_quote_designs');
-      if (!saved) return;
-      try {
-        const designs = JSON.parse(saved);
-        if (!designs.length) return;
-        const grid = document.getElementById('attachmentGrid');
-        const block = document.getElementById('designAttachments');
-        const note  = document.getElementById('attachmentNote');
+    /* ---- State ---- */
+    let currentStep = 1;
+    let selectedPack = null;
 
-        designs.forEach(d => {
-          const div = document.createElement('div');
-          div.className = 'design-thumb';
-          if (d.thumbnail) {
-            div.innerHTML = `<img src="${d.thumbnail}" alt="${d.name}" /><span>${d.name}</span>`;
-          } else {
-            div.innerHTML = `<div style="width:88px;height:88px;background:var(--light);border-radius:10px;border:2px solid var(--pink);display:flex;align-items:center;justify-content:center;font-size:2rem;">🖼️</div><span>${d.name}</span>`;
-          }
-          grid.appendChild(div);
-        });
-
-        note.textContent = `${designs.length} design${designs.length > 1 ? 's' : ''} attached from your Design Studio.`;
-        block.style.display = 'block';
-
-        // Pre-fill design count
-        const sel = document.getElementById('numDesigns');
-        const cnt = designs.length;
-        for (const opt of sel.options) {
-          if (opt.value === String(cnt)) { opt.selected = true; break; }
-          if (cnt >= 5 && opt.value === '5+') { opt.selected = true; break; }
-        }
-      } catch(e) { /* malformed JSON */ }
+    /* ---- Load design from studio ---- */
+    (function loadDesign() {
+      const thumb = localStorage.getItem('cv_design_thumb');
+      if (!thumb) return;
+      const box = document.getElementById('designAttachBox');
+      const thumbEl = document.getElementById('attachThumb');
+      thumbEl.innerHTML = `<img src="${thumb}" alt="Your design" />`;
+      box.style.display = 'flex';
     })();
 
-    /* ---- File name display ---- */
-    document.getElementById('designFile').addEventListener('change', function () {
-      const files = this.files;
-      if (!files.length) { document.getElementById('fileName').textContent = 'No file chosen'; return; }
-      document.getElementById('fileName').textContent =
-        files.length === 1 ? files[0].name : `${files.length} files selected`;
+    /* ---- Pack selection ---- */
+    document.querySelectorAll('.pack-card').forEach(card => {
+      card.addEventListener('click', () => {
+        document.querySelectorAll('.pack-card').forEach(c => c.classList.remove('selected'));
+        card.classList.add('selected');
+        selectedPack = {
+          name: card.dataset.pack,
+          price: card.dataset.price,
+          qty: card.dataset.qty,
+        };
+      });
     });
 
-    /* ---- Form submit (demo) ---- */
-    document.getElementById('quoteForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-      const required = this.querySelectorAll('[required]');
+    /* ---- File name display ---- */
+    document.getElementById('designFile').addEventListener('change', function() {
+      document.getElementById('fileName').textContent = this.files.length ? this.files[0].name : 'No file chosen';
+    });
+
+    /* ---- Navigation ---- */
+    function goToStep(step) {
+      document.querySelectorAll('.wizard-panel').forEach(p => p.classList.toggle('active', Number(p.dataset.panel) === step));
+      document.querySelectorAll('.progress-step').forEach(p => {
+        const s = Number(p.dataset.step);
+        p.classList.toggle('active', s === step);
+        p.classList.toggle('done', s < step);
+      });
+      currentStep = step;
+      if (step === 4) buildSummary();
+      window.scrollTo({ top: document.querySelector('.quote-section').offsetTop - 100, behavior: 'smooth' });
+    }
+
+    document.getElementById('next1').addEventListener('click', () => {
+      if (!selectedPack) { alert('Please choose a pack to continue.'); return; }
+      goToStep(2);
+    });
+    document.getElementById('back2').addEventListener('click', () => goToStep(1));
+    document.getElementById('next2').addEventListener('click', () => goToStep(3));
+    document.getElementById('back3').addEventListener('click', () => goToStep(2));
+    document.getElementById('next3').addEventListener('click', () => {
+      const required = ['firstName', 'lastName', 'email'];
       let valid = true;
-      required.forEach(f => {
-        f.style.borderColor = '';
-        if (!f.value.trim()) { f.style.borderColor = '#C00'; valid = false; }
+      required.forEach(id => {
+        const el = document.getElementById(id);
+        el.style.borderColor = '';
+        if (!el.value.trim()) { el.style.borderColor = '#EF4444'; valid = false; }
       });
       if (!valid) { alert('Please fill in all required fields.'); return; }
+      goToStep(4);
+    });
+    document.getElementById('back4').addEventListener('click', () => goToStep(3));
 
-      document.getElementById('successMsg').classList.add('show');
-      this.querySelectorAll('input, select, textarea, button[type=submit]').forEach(el => el.disabled = true);
-      // Clear stored designs after successful submit
-      localStorage.removeItem('cv_quote_designs');
-      window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 40, behavior: 'smooth' });
+    /* ---- Summary ---- */
+    function buildSummary() {
+      const thumb = localStorage.getItem('cv_design_thumb');
+      const fname = document.getElementById('firstName').value;
+      const lname = document.getElementById('lastName').value;
+      const email = document.getElementById('email').value;
+      const box = document.getElementById('summaryBox');
+      box.innerHTML = `
+        <div class="summary-row"><span>Pack</span><span>${selectedPack.name} — ${selectedPack.price}</span></div>
+        <div class="summary-row"><span>Quantity</span><span>${selectedPack.qty}</span></div>
+        <div class="summary-row"><span>Name</span><span>${fname} ${lname}</span></div>
+        <div class="summary-row"><span>Email</span><span>${email}</span></div>
+        ${thumb ? `<div class="summary-row"><span>Design</span><span><img class="summary-thumb" src="${thumb}" alt="design" /></span></div>` : ''}
+      `;
+    }
+
+    /* ---- Submit ---- */
+    document.getElementById('quoteForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.querySelector('.quote-section form').style.display = 'none';
+      document.querySelector('.progress-bar').style.display = 'none';
+      document.getElementById('successState').classList.add('show');
+      localStorage.removeItem('cv_design_thumb');
+      localStorage.removeItem('cv_design_json');
+      launchConfetti();
+      window.scrollTo({ top: document.querySelector('.quote-section').offsetTop - 100, behavior: 'smooth' });
     });
   </script>
 

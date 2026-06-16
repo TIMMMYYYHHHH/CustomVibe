@@ -4,27 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Design Studio — CustomVibe</title>
-  <meta name="description" content="Design your custom square magnets in the CustomVibe Studio. Upload images, add text, stickers, and more. Create multiple designs and request a quote instantly." />
+  <meta name="description" content="Design your custom 3×3 magnet in the CustomVibe Studio. Upload your image, add text, pick colors and see a live preview. Free to use." />
   <meta property="og:title" content="Magnet Design Studio — CustomVibe" />
-  <meta property="og:description" content="Create beautiful custom magnets with our free online design tool. Upload your image, add text and stickers, then request a quote." />
+  <meta property="og:description" content="Create your custom magnet design online. Upload, customize, preview — then request a quote in seconds." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo">Custom<span>Vibe</span></a>
+    <a href="index.html" class="nav-logo">CustomVibe</a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="design.html" class="active">Design It</a></li>
+      <li><a href="index.html#pricing">Pricing</a></li>
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
-    <a href="quote.html" class="btn btn-nav">Get a Quote</a>
+    <a href="quote.html" class="btn-nav">Get a Quote</a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
   </nav>
 
@@ -32,192 +32,109 @@
     <button class="mobile-menu-close" id="menuClose">✕</button>
     <a href="index.html">Home</a>
     <a href="design.html">Design It</a>
+    <a href="index.html#pricing">Pricing</a>
     <a href="quote.html">Get a Quote</a>
     <a href="quote.html" class="mobile-cta">Get a Quote 📬</a>
   </div>
 
-  <!-- HERO -->
   <div class="design-hero">
-    <h1>Magnet Design Studio 🎨</h1>
-    <p>Create multiple designs, then send them all to your quote in one click.</p>
+    <h1>Design Studio 🎨</h1>
+    <p>Upload your image, add text, and see your magnet come to life.</p>
   </div>
 
-  <!-- DESIGN TAB BAR -->
-  <div class="design-tab-bar" id="tabBar">
-    <!-- tabs injected by JS -->
-    <button class="tab-add-btn" id="addTabBtn">+ New Design</button>
-    <button class="tab-send-btn" id="sendToQuoteBtn">📬 Send All to Quote</button>
-  </div>
-
-  <!-- WORKSPACE -->
   <div class="design-workspace">
 
-    <!-- TOOLBAR -->
     <aside class="design-toolbar">
 
-      <!-- TEMPLATES SECTION -->
-      <div class="acc-section">
-        <button class="acc-header open" data-target="acc-templates">
-          🗂️ &nbsp;Templates <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body open" id="acc-templates">
-          <p style="font-size:0.78rem;color:var(--gray);margin-bottom:8px;">Click to apply a starter design</p>
-          <div class="template-grid" id="templateGrid"></div>
+      <div class="toolbar-section">
+        <h4>🖼️ Image</h4>
+        <label class="upload-zone" id="uploadZone">
+          <span class="upload-icon">⬆️</span>
+          <p>Click or drag to upload</p>
+          <small>JPG · PNG · GIF · WEBP</small>
+          <input type="file" id="imageUpload" accept="image/*" />
+        </label>
+        <div class="slider-row" style="margin-top:12px;">
+          <label>Scale <span id="scaleVal">100</span>%</label>
+          <input type="range" id="imgScale" min="10" max="300" value="100" />
+        </div>
+        <div class="slider-row">
+          <label>Rotate <span id="rotateVal">0</span>°</label>
+          <input type="range" id="imgRotate" min="-180" max="180" value="0" />
+        </div>
+        <div class="slider-row">
+          <label>Opacity <span id="imgOpacityVal">100</span>%</label>
+          <input type="range" id="imgOpacity" min="10" max="100" value="100" />
+        </div>
+        <button class="tb-btn tb-btn-ghost" id="fitBtn">⊡ Fit to Canvas</button>
+        <button class="tb-btn tb-btn-ghost" id="fillBtn">⊞ Fill Canvas</button>
+      </div>
+
+      <div class="toolbar-section">
+        <h4>✏️ Text</h4>
+        <input type="text" class="text-input-field" id="textInput" placeholder="Type something..." />
+        <div class="slider-row">
+          <label>Size <span id="fontSizeVal">36</span>px</label>
+          <input type="range" id="fontSizeSlider" min="10" max="120" value="36" />
+        </div>
+        <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Text Color</p>
+        <div class="color-swatches">
+          <div class="swatch" style="background:#ffffff;border:1px solid #444;" data-color="#ffffff"></div>
+          <div class="swatch" style="background:#0F0A1E;" data-color="#0F0A1E"></div>
+          <div class="swatch" style="background:#7C3AED;" data-color="#7C3AED"></div>
+          <div class="swatch" style="background:#EC4899;" data-color="#EC4899"></div>
+          <div class="swatch" style="background:#F97316;" data-color="#F97316"></div>
+          <div class="swatch" style="background:#FBBF24;" data-color="#FBBF24"></div>
+          <input type="color" class="color-custom-input" id="customTextColor" value="#ffffff" title="Custom color" />
+        </div>
+        <button class="tb-btn tb-btn-primary" id="addTextBtn">+ Add Text</button>
+      </div>
+
+      <div class="toolbar-section">
+        <h4>🎨 Background</h4>
+        <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Color</p>
+        <div class="color-swatches">
+          <div class="swatch" style="background:#ffffff;border:1px solid #444;" data-bg="#ffffff"></div>
+          <div class="swatch" style="background:#0F0A1E;" data-bg="#0F0A1E"></div>
+          <div class="swatch" style="background:#7C3AED;" data-bg="#7C3AED"></div>
+          <div class="swatch" style="background:#EC4899;" data-bg="#EC4899"></div>
+          <div class="swatch" style="background:#F97316;" data-bg="#F97316"></div>
+          <div class="swatch" style="background:#FBBF24;" data-bg="#FBBF24"></div>
+          <div class="swatch" style="background:#10B981;" data-bg="#10B981"></div>
+          <div class="swatch" style="background:#3B82F6;" data-bg="#3B82F6"></div>
+          <input type="color" class="color-custom-input" id="customBgColor" value="#ffffff" title="Custom background" />
         </div>
       </div>
 
-      <!-- IMAGE SECTION -->
-      <div class="acc-section">
-        <button class="acc-header open" data-target="acc-image">
-          🖼️ &nbsp;Image <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body open" id="acc-image">
-          <label class="upload-zone" id="uploadZone">
-            <span class="upload-icon">⬆️</span>
-            <p>Click or drag to upload<br /><small>JPG PNG GIF WEBP</small></p>
-            <input type="file" id="imageUpload" accept="image/*" />
-          </label>
-          <div class="slider-row" style="margin-top:12px;">
-            <label>Scale <span id="scaleVal">100</span>%</label>
-            <input type="range" id="imgScale" min="20" max="300" value="100" />
-          </div>
-          <div class="slider-row">
-            <label>Rotate <span id="rotateVal">0</span>°</label>
-            <input type="range" id="imgRotate" min="-180" max="180" value="0" />
-          </div>
-          <div class="slider-row">
-            <label>Opacity <span id="imgOpacityVal">100</span>%</label>
-            <input type="range" id="imgOpacity" min="10" max="100" value="100" />
-          </div>
-          <div class="flip-row">
-            <button class="flip-btn" id="flipHBtn">↔ Flip H</button>
-            <button class="flip-btn" id="flipVBtn">↕ Flip V</button>
-          </div>
-          <button class="tb-btn ghost" id="fitImageBtn" style="margin-top:8px;">⊡ Fit to Canvas</button>
-          <button class="tb-btn ghost" id="fillImageBtn">⊞ Fill Canvas</button>
-        </div>
-      </div>
-
-      <!-- TEXT SECTION -->
-      <div class="acc-section">
-        <button class="acc-header" data-target="acc-text">
-          ✏️ &nbsp;Text <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body" id="acc-text">
-          <input type="text" class="text-input" id="textInput" placeholder="Type your text..." />
-          <select class="font-select" id="fontSelect">
-            <option value="Nunito">Nunito (default)</option>
-            <option value="Pacifico">Pacifico (fun)</option>
-            <option value="Georgia">Georgia (classic)</option>
-            <option value="Impact">Impact (bold)</option>
-            <option value="Arial">Arial (clean)</option>
-            <option value="Courier New">Courier (mono)</option>
-          </select>
-          <div class="slider-row">
-            <label>Size <span id="fontSizeVal">32</span>px</label>
-            <input type="range" id="fontSizeSlider" min="10" max="120" value="32" />
-          </div>
-          <div class="style-row">
-            <button class="style-btn" id="boldBtn" title="Bold"><b>B</b></button>
-            <button class="style-btn" id="italicBtn" title="Italic"><i>I</i></button>
-            <button class="style-btn" id="underlineBtn" title="Underline"><u>U</u></button>
-          </div>
-          <div class="align-row">
-            <button class="align-btn" data-align="left" title="Align Left">⬅</button>
-            <button class="align-btn" data-align="center" title="Center">↔</button>
-            <button class="align-btn" data-align="right" title="Align Right">➡</button>
-          </div>
-          <p style="font-size:0.72rem;font-weight:800;color:var(--gray);margin-top:10px;text-transform:uppercase;letter-spacing:0.07em;">Text Color</p>
-          <div class="color-row">
-            <div class="color-swatch" style="background:#2D2B3D;border:2px solid #ccc;" data-color="#2D2B3D"></div>
-            <div class="color-swatch" style="background:#fff;border:2px solid #ccc;" data-color="#ffffff"></div>
-            <div class="color-swatch" style="background:var(--pink-dark);" data-color="#C4456A"></div>
-            <div class="color-swatch" style="background:var(--lavender-dark);" data-color="#7C3AED"></div>
-            <div class="color-swatch" style="background:var(--mint-dark);" data-color="#2A9D8F"></div>
-            <div class="color-swatch" style="background:#E67E22;" data-color="#E67E22"></div>
-            <input type="color" class="color-custom" id="customTextColor" value="#2D2B3D" title="Custom color" />
-          </div>
-          <button class="tb-btn ghost" id="addTextBtn" style="margin-top:10px;background:linear-gradient(135deg,var(--pink),var(--lavender));color:var(--dark);">+ Add Text to Canvas</button>
-        </div>
-      </div>
-
-      <!-- STICKERS SECTION -->
-      <div class="acc-section">
-        <button class="acc-header" data-target="acc-stickers">
-          😊 &nbsp;Stickers <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body" id="acc-stickers">
-          <p style="font-size:0.78rem;color:var(--gray);margin-bottom:6px;">Click to add to canvas</p>
-          <div class="sticker-grid" id="stickerGrid"></div>
-        </div>
-      </div>
-
-      <!-- BACKGROUND SECTION -->
-      <div class="acc-section">
-        <button class="acc-header" data-target="acc-bg">
-          🎨 &nbsp;Background <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body" id="acc-bg">
-          <p style="font-size:0.72rem;font-weight:800;color:var(--gray);text-transform:uppercase;letter-spacing:0.07em;">Color</p>
-          <div class="color-row" style="margin-top:6px;">
-            <div class="color-swatch" style="background:#fff;border:2px solid #ccc;" data-bg="#ffffff"></div>
-            <div class="color-swatch" style="background:var(--dark);" data-bg="#2D2B3D"></div>
-            <div class="color-swatch" style="background:var(--pink);" data-bg="#FFB3C6"></div>
-            <div class="color-swatch" style="background:var(--lavender);" data-bg="#D4AAFF"></div>
-            <div class="color-swatch" style="background:var(--mint);" data-bg="#B3EDE9"></div>
-            <div class="color-swatch" style="background:var(--yellow);" data-bg="#FFF0B3"></div>
-            <div class="color-swatch" style="background:var(--peach);" data-bg="#FFD0B3"></div>
-            <div class="color-swatch" style="background:var(--sky);" data-bg="#B5D5FF"></div>
-            <input type="color" class="color-custom" id="customBgColor" value="#ffffff" title="Custom background" />
-          </div>
-        </div>
-      </div>
-
-      <!-- LAYERS SECTION -->
-      <div class="acc-section">
-        <button class="acc-header" data-target="acc-layers">
-          📑 &nbsp;Layers <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body" id="acc-layers">
-          <div class="layers-list" id="layersList">
-            <p class="no-layers">No layers yet</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ACTIONS SECTION -->
-      <div class="acc-section">
-        <button class="acc-header" data-target="acc-actions">
-          ⚙️ &nbsp;Actions <span class="acc-chevron">▼</span>
-        </button>
-        <div class="acc-body" id="acc-actions">
-          <div style="display:flex;gap:8px;">
-            <button class="tb-btn ghost" id="undoBtn" style="flex:1;">↩ Undo</button>
-            <button class="tb-btn ghost" id="redoBtn" style="flex:1;">↪ Redo</button>
-          </div>
-          <button class="tb-btn danger" id="deleteSelBtn">🗑 Delete Selected</button>
-          <button class="tb-btn ghost" id="clearBtn">🔄 Clear Canvas</button>
-        </div>
+      <div class="toolbar-section">
+        <h4>⚙️ Actions</h4>
+        <button class="tb-btn tb-btn-ghost" id="undoBtn">↩ Undo</button>
+        <button class="tb-btn tb-btn-danger" id="deleteBtn">🗑 Delete Selected</button>
+        <button class="tb-btn tb-btn-ghost" id="clearBtn">🔄 Clear Canvas</button>
       </div>
 
     </aside>
 
-    <!-- CANVAS AREA -->
-    <main class="design-canvas-area">
-      <div class="canvas-wrapper" id="canvasWrapper">
+    <main class="canvas-area">
+      <div class="canvas-wrapper">
         <canvas id="designCanvas"></canvas>
-        <div class="size-badge">3" × 3" Square Magnet</div>
+        <div class="canvas-size-badge">3" × 3" Square Magnet</div>
       </div>
-      <div class="canvas-controls">
-        <button class="btn btn-primary" id="downloadBtn">⬇️ Download This Design</button>
+      <p class="canvas-hint">Click to select · Drag to move · Corners to resize · Double-click text to edit</p>
+      <div class="canvas-actions">
+        <button class="btn btn-outline" id="downloadBtn">⬇️ Download PNG</button>
+        <button class="btn btn-primary" id="sendToQuoteBtn">Request a Quote →</button>
       </div>
-      <p class="canvas-hint">Click to select • Drag to move • Pinch corners to resize • Double-click text to edit</p>
     </main>
 
   </div>
 
-  <!-- Save indicator toast -->
-  <div class="save-indicator" id="saveIndicator">✓ Design auto-saved</div>
+  <div id="saveToast" style="
+    position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(80px);
+    background:var(--surface2); border:1px solid var(--border); color:var(--text);
+    padding:10px 22px; border-radius:99px; font-size:0.82rem; font-weight:600;
+    box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.3s; z-index:500;
+    white-space:nowrap; pointer-events:none;">✓ Design saved</div>
 
   <script src="design.js"></script>
   <script src="animations.js"></script>
