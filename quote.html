@@ -10,7 +10,8 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -24,21 +25,20 @@
       <li><a href="quote.html" class="active">Get a Quote</a></li>
     </ul>
     <a href="design.html" class="btn-nav">Design It</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">&times;</button>
     <a href="index.html">Home</a>
     <a href="design.html">Design It</a>
     <a href="index.html#pricing">Pricing</a>
     <a href="quote.html">Get a Quote</a>
-    <a href="design.html" class="mobile-cta">Start Designing ✨</a>
   </div>
 
   <div class="quote-hero">
-    <h1>Request a Quote 📬</h1>
-    <p>Pick your pack, share your design, and we'll be in touch within 1 business day.</p>
+    <h1>Request a Quote</h1>
+    <p>Pick your pack, share your design, and we'll get back to you within 1 business day.</p>
   </div>
 
   <section class="quote-section">
@@ -80,7 +80,7 @@
           </div>
         </div>
         <div class="wizard-nav">
-          <button type="button" class="btn-next" id="next1">Next →</button>
+          <button type="button" class="btn-next" id="next1">Next</button>
         </div>
       </div>
 
@@ -90,7 +90,7 @@
         <p>Bring in your design from the studio, or upload a file directly.</p>
 
         <div id="designAttachBox" class="design-attach-box" style="display:none;">
-          <div class="design-attach-thumb" id="attachThumb">🖼️</div>
+          <div class="design-attach-thumb" id="attachThumb"></div>
           <div class="design-attach-info">
             <h4>Design from Studio</h4>
             <p>This will be attached to your quote request.</p>
@@ -100,7 +100,7 @@
         <div class="form-group">
           <label>Upload a file instead (optional)</label>
           <label class="file-upload-label">
-            📎 Click to attach a file
+            Click to attach a file
             <input type="file" id="designFile" accept="image/*,.pdf" />
           </label>
           <span id="fileName" style="font-size:0.8rem;color:var(--text-muted);display:block;margin-top:6px;">No file chosen</span>
@@ -112,8 +112,8 @@
         </div>
 
         <div class="wizard-nav">
-          <button type="button" class="btn-back" id="back2">← Back</button>
-          <button type="button" class="btn-next" id="next2">Next →</button>
+          <button type="button" class="btn-back" id="back2">Back</button>
+          <button type="button" class="btn-next" id="next2">Next</button>
         </div>
       </div>
 
@@ -142,8 +142,8 @@
         </div>
 
         <div class="wizard-nav">
-          <button type="button" class="btn-back" id="back3">← Back</button>
-          <button type="button" class="btn-next" id="next3">Next →</button>
+          <button type="button" class="btn-back" id="back3">Back</button>
+          <button type="button" class="btn-next" id="next3">Next</button>
         </div>
       </div>
 
@@ -155,8 +155,8 @@
         <div class="summary-box" id="summaryBox"></div>
 
         <div class="wizard-nav">
-          <button type="button" class="btn-back" id="back4">← Back</button>
-          <button type="submit" class="btn-next">Submit Request ✨</button>
+          <button type="button" class="btn-back" id="back4">Back</button>
+          <button type="submit" class="btn-next">Submit Request</button>
         </div>
       </div>
 
@@ -180,7 +180,7 @@
       <a href="design.html">Design It</a>
       <a href="quote.html">Get a Quote</a>
     </nav>
-    <p class="footer-copy">© 2026 CustomVibe. All rights reserved.</p>
+    <p class="footer-copy">&copy; 2026 CustomVibe. All rights reserved.</p>
   </footer>
 
   <script>

@@ -140,7 +140,7 @@ document.getElementById('fillBtn').addEventListener('click', () => {
 });
 
 /* ---- Text ---- */
-let activeTextColor = '#ffffff';
+let activeTextColor = '#1A1A2E';
 
 document.querySelectorAll('[data-color]').forEach(sw => {
   sw.addEventListener('click', () => {

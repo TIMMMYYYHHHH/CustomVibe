@@ -10,7 +10,8 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
@@ -25,21 +26,20 @@
       <li><a href="quote.html">Get a Quote</a></li>
     </ul>
     <a href="quote.html" class="btn-nav">Get a Quote</a>
-    <button class="hamburger" id="hamburger" aria-label="Open menu">☰</button>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">&#9776;</button>
   </nav>
 
   <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-menu-close" id="menuClose">✕</button>
+    <button class="mobile-menu-close" id="menuClose" aria-label="Close menu">&times;</button>
     <a href="index.html">Home</a>
     <a href="design.html">Design It</a>
     <a href="index.html#pricing">Pricing</a>
     <a href="quote.html">Get a Quote</a>
-    <a href="quote.html" class="mobile-cta">Get a Quote 📬</a>
   </div>
 
   <div class="design-hero">
-    <h1>Design Studio 🎨</h1>
-    <p>Upload your image, add text, and see your magnet come to life.</p>
+    <h1>Design Studio</h1>
+    <p>Upload your image, add text, and preview your magnet.</p>
   </div>
 
   <div class="design-workspace">
@@ -47,7 +47,7 @@
     <aside class="design-toolbar">
 
       <div class="toolbar-section">
-        <h4>🖼️ Image</h4>
+        <h4>Image</h4>
         <label class="upload-zone" id="uploadZone">
           <span class="upload-icon">⬆️</span>
           <p>Click or drag to upload</p>
@@ -66,12 +66,12 @@
           <label>Opacity <span id="imgOpacityVal">100</span>%</label>
           <input type="range" id="imgOpacity" min="10" max="100" value="100" />
         </div>
-        <button class="tb-btn tb-btn-ghost" id="fitBtn">⊡ Fit to Canvas</button>
-        <button class="tb-btn tb-btn-ghost" id="fillBtn">⊞ Fill Canvas</button>
+        <button class="tb-btn tb-btn-ghost" id="fitBtn">Fit to Canvas</button>
+        <button class="tb-btn tb-btn-ghost" id="fillBtn">Fill Canvas</button>
       </div>
 
       <div class="toolbar-section">
-        <h4>✏️ Text</h4>
+        <h4>Text</h4>
         <input type="text" class="text-input-field" id="textInput" placeholder="Type something..." />
         <div class="slider-row">
           <label>Size <span id="fontSizeVal">36</span>px</label>
@@ -79,38 +79,38 @@
         </div>
         <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Text Color</p>
         <div class="color-swatches">
-          <div class="swatch" style="background:#ffffff;border:1px solid #444;" data-color="#ffffff"></div>
-          <div class="swatch" style="background:#0F0A1E;" data-color="#0F0A1E"></div>
-          <div class="swatch" style="background:#7C3AED;" data-color="#7C3AED"></div>
-          <div class="swatch" style="background:#EC4899;" data-color="#EC4899"></div>
-          <div class="swatch" style="background:#F97316;" data-color="#F97316"></div>
-          <div class="swatch" style="background:#FBBF24;" data-color="#FBBF24"></div>
+          <div class="swatch" style="background:#ffffff;border:1px solid rgba(26,26,46,0.2);" data-color="#ffffff"></div>
+          <div class="swatch" style="background:#1A1A2E;" data-color="#1A1A2E"></div>
+          <div class="swatch" style="background:#FF6B6B;" data-color="#FF6B6B"></div>
+          <div class="swatch" style="background:#4ECDC4;" data-color="#4ECDC4"></div>
+          <div class="swatch" style="background:#FFE66D;" data-color="#FFE66D"></div>
+          <div class="swatch" style="background:#C3A6FF;" data-color="#C3A6FF"></div>
           <input type="color" class="color-custom-input" id="customTextColor" value="#ffffff" title="Custom color" />
         </div>
         <button class="tb-btn tb-btn-primary" id="addTextBtn">+ Add Text</button>
       </div>
 
       <div class="toolbar-section">
-        <h4>🎨 Background</h4>
+        <h4>Background</h4>
         <p style="font-size:0.72rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;">Color</p>
         <div class="color-swatches">
-          <div class="swatch" style="background:#ffffff;border:1px solid #444;" data-bg="#ffffff"></div>
-          <div class="swatch" style="background:#0F0A1E;" data-bg="#0F0A1E"></div>
-          <div class="swatch" style="background:#7C3AED;" data-bg="#7C3AED"></div>
-          <div class="swatch" style="background:#EC4899;" data-bg="#EC4899"></div>
-          <div class="swatch" style="background:#F97316;" data-bg="#F97316"></div>
-          <div class="swatch" style="background:#FBBF24;" data-bg="#FBBF24"></div>
-          <div class="swatch" style="background:#10B981;" data-bg="#10B981"></div>
-          <div class="swatch" style="background:#3B82F6;" data-bg="#3B82F6"></div>
+          <div class="swatch" style="background:#ffffff;border:1px solid rgba(26,26,46,0.2);" data-bg="#ffffff"></div>
+          <div class="swatch" style="background:#1A1A2E;" data-bg="#1A1A2E"></div>
+          <div class="swatch" style="background:#FF6B6B;" data-bg="#FF6B6B"></div>
+          <div class="swatch" style="background:#4ECDC4;" data-bg="#4ECDC4"></div>
+          <div class="swatch" style="background:#FFE66D;" data-bg="#FFE66D"></div>
+          <div class="swatch" style="background:#C3A6FF;" data-bg="#C3A6FF"></div>
+          <div class="swatch" style="background:#F5EDE3;" data-bg="#F5EDE3"></div>
+          <div class="swatch" style="background:#EDE4D8;" data-bg="#EDE4D8"></div>
           <input type="color" class="color-custom-input" id="customBgColor" value="#ffffff" title="Custom background" />
         </div>
       </div>
 
       <div class="toolbar-section">
-        <h4>⚙️ Actions</h4>
-        <button class="tb-btn tb-btn-ghost" id="undoBtn">↩ Undo</button>
-        <button class="tb-btn tb-btn-danger" id="deleteBtn">🗑 Delete Selected</button>
-        <button class="tb-btn tb-btn-ghost" id="clearBtn">🔄 Clear Canvas</button>
+        <h4>Actions</h4>
+        <button class="tb-btn tb-btn-ghost" id="undoBtn">Undo</button>
+        <button class="tb-btn tb-btn-danger" id="deleteBtn">Delete Selected</button>
+        <button class="tb-btn tb-btn-ghost" id="clearBtn">Clear Canvas</button>
       </div>
 
     </aside>
@@ -122,8 +122,8 @@
       </div>
       <p class="canvas-hint">Click to select · Drag to move · Corners to resize · Double-click text to edit</p>
       <div class="canvas-actions">
-        <button class="btn btn-outline" id="downloadBtn">⬇️ Download PNG</button>
-        <button class="btn btn-primary" id="sendToQuoteBtn">Request a Quote →</button>
+        <button class="btn btn-outline" id="downloadBtn">Download PNG</button>
+        <button class="btn btn-primary" id="sendToQuoteBtn">Request a Quote</button>
       </div>
     </main>
 
@@ -131,9 +131,9 @@
 
   <div id="saveToast" style="
     position:fixed; bottom:28px; left:50%; transform:translateX(-50%) translateY(80px);
-    background:var(--surface2); border:1px solid var(--border); color:var(--text);
+    background:#ffffff; border:1px solid rgba(26,26,46,0.1); color:#1A1A2E;
     padding:10px 22px; border-radius:99px; font-size:0.82rem; font-weight:600;
-    box-shadow:0 8px 32px rgba(0,0,0,0.4); transition:transform 0.3s; z-index:500;
+    box-shadow:0 4px 16px rgba(26,26,46,0.1); transition:transform 0.3s; z-index:500;
     white-space:nowrap; pointer-events:none;">✓ Design saved</div>
 
   <script src="design.js"></script>

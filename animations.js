@@ -1,56 +1,28 @@
-/* ====================================================
-   CustomVibe — Animations & Interactivity
-   ==================================================== */
+/* CustomVibe — Animations */
 
-/* ---------- CURSOR SPARKLES ---------- */
-(function initSparkles() {
-  const colors = ['#7C3AED','#A855F7','#EC4899','#F97316','#FBBF24'];
-  let count = 0;
-  document.addEventListener('mousemove', e => {
-    if (count++ % 3 !== 0) return;
-    const el = document.createElement('span');
-    const size = Math.random() * 12 + 5;
-    el.style.cssText = `
-      position:fixed; pointer-events:none; z-index:9999;
-      width:${size}px; height:${size}px; border-radius:50%;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      left:${e.clientX - size/2}px; top:${e.clientY - size/2}px;
-      box-shadow:0 0 8px currentColor;
-      transition:transform 0.6s ease, opacity 0.6s ease;
-    `;
-    document.body.appendChild(el);
-    requestAnimationFrame(() => {
-      el.style.transform = `scale(0) translate(${(Math.random()-0.5)*36}px, ${(Math.random()-0.5)*36}px)`;
-      el.style.opacity = '0';
-    });
-    setTimeout(() => el.remove(), 650);
-  });
-})();
-
-/* ---------- NAV SHRINK ---------- */
+/* Nav shadow on scroll */
 (function initNavScroll() {
   const nav = document.querySelector('.nav');
   if (!nav) return;
   window.addEventListener('scroll', () => {
-    nav.style.padding = window.scrollY > 60 ? '12px 48px' : '';
-    nav.style.boxShadow = window.scrollY > 60 ? '0 8px 30px rgba(0,0,0,0.4)' : '';
+    nav.style.boxShadow = window.scrollY > 60 ? '0 4px 20px rgba(0,0,0,0.06)' : '';
   }, { passive: true });
 })();
 
-/* ---------- SCROLL REVEAL ---------- */
+/* Scroll reveal */
 (function initScrollReveal() {
   const style = document.createElement('style');
   style.textContent = `
-    .reveal { opacity:0; transform:translateY(32px); transition:opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+    .reveal { opacity:0; transform:translateY(24px); transition:opacity .5s cubic-bezier(.22,1,.36,1), transform .5s cubic-bezier(.22,1,.36,1); }
     .reveal.revealed { opacity:1; transform:translateY(0); }
   `;
   document.head.appendChild(style);
 
-  const selectors = ['.step-card', '.price-card', '.feature-card', '.section-label', '.section-title', '.section-sub'];
+  const selectors = ['.step-item', '.price-card', '.feature-card', '.section-eyebrow', '.section-title', '.section-sub'];
   selectors.forEach(sel => {
     document.querySelectorAll(sel).forEach((el, i) => {
       el.classList.add('reveal');
-      el.style.transitionDelay = (i * 80) + 'ms';
+      el.style.transitionDelay = (i * 70) + 'ms';
     });
   });
 
@@ -63,11 +35,11 @@
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 })();
 
-/* ---------- CONFETTI ---------- */
+/* Confetti (used on quote submit) */
 function launchConfetti() {
-  const colors = ['#7C3AED','#A855F7','#EC4899','#F97316','#FBBF24','#fff'];
-  for (let i = 0; i < 120; i++) {
-    setTimeout(() => spawnConfettiPiece(colors), Math.random() * 700);
+  const colors = ['#FF6B6B','#4ECDC4','#FFE66D','#C3A6FF','#1A1A2E'];
+  for (let i = 0; i < 100; i++) {
+    setTimeout(() => spawnConfettiPiece(colors), Math.random() * 600);
   }
 }
 
